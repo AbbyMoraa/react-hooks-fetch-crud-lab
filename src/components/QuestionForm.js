@@ -11,10 +11,9 @@ function QuestionForm({ onAddQuestion }) {
   });
 
   function handleChange(event) {
-    const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: name === "correctIndex" ? parseInt(value, 10) : value,
+      [event.target.name]: event.target.value,
     });
   }
 
@@ -26,7 +25,6 @@ function QuestionForm({ onAddQuestion }) {
       correctIndex: parseInt(formData.correctIndex, 10),
     };
     onAddQuestion(newQuestion);
-
     setFormData({
       prompt: "",
       answer1: "",
@@ -93,10 +91,10 @@ function QuestionForm({ onAddQuestion }) {
             value={formData.correctIndex}
             onChange={handleChange}
           >
-            <option value={0}>0</option>
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
+            <option value="0">{formData.answer1}</option>
+            <option value="1">{formData.answer2}</option>
+            <option value="2">{formData.answer3}</option>
+            <option value="3">{formData.answer4}</option>
           </select>
         </label>
         <button type="submit">Add Question</button>
